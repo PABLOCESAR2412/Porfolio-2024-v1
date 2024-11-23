@@ -9,6 +9,9 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
     output: 'server',
     adapter: vercel(),
+    redirects: {
+        '/': '/es',
+    },
     integrations: [tailwind()],
     devToolbar: {
         enabled: false

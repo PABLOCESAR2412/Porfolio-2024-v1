@@ -1,7 +1,7 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_CqWTvkKK.mjs';
 import 'kleur/colors';
-import { $ as $$Navbar, a as $$About, b as $$Project, c as $$Skills, d as $$Experience, e as $$Studies, f as $$Courses, g as $$Contact, h as $$Footer, i as $$Layout } from '../chunks/Footer_B5OYinjD.mjs';
+import { $ as $$Navbar, a as $$About, b as $$Project, c as $$Skills, d as $$Experience, e as $$Studies, f as $$Courses, g as $$Contact, h as $$Footer, i as $$Layout } from '../chunks/Footer_BFFGEboG.mjs';
 export { renderers } from '../renderers.mjs';
 
 const navbar = {

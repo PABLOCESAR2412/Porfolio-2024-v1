@@ -20,7 +20,7 @@
 			"dest": "_render"
 		},
 		{
-			"src": "^\\/es\\/?$",
+			"src": "^\\/$",
 			"dest": "_render"
 		}
 	]

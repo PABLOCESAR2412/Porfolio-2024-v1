@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro'
+import About from '../../components/About.astro'
+import Project from '../../components/Project.astro'
+import Skills from '../../components/Skills.astro'
+import Experience from '../..//components/Experience.astro';
+import Studies from '../..//components/Studies.astro';
+import Courses from '../..//components/Courses.astro';
+import Contact from '../..//components/Contact.astro';
+import Footer from '../..//components/Footer.astro';
+import en from '../../i18n/en.json';
+
+const locale = 'en';
+---
+
+<Layout title="Porfolio Pablo Torres">
+	<main class="z-10">
+		<Navbar translations={en} locale={locale}/>
+		<About translations={en} locale={locale}/>
+		<Project translations={en} locale={locale}/>
+		<Skills translations={en} locale={locale}/>
+		<Experience translations={en} locale={locale}/>
+		<Studies translations={en} locale={locale}/>
+		<Courses translations={en} locale={locale}/>
+		<Contact translations={en} locale={locale}/>
+		<Footer translations={en} locale={locale}/>
+	</main>
+</Layout>

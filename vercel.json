@@ -1,10 +1,5 @@
 {
     "buildCommand": "astro build",
-    "outputDirectory": "dist",
-    "framework": "astro",
-    "installCommand": "npm install",
-    "routes": [
-        { "handle": "filesystem" },
-        { "src": "/(.*)", "dest": "/index.html" }
-    ]
+    "devCommand": "astro dev",
+    "framework": "astro"
 }

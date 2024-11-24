@@ -2,13 +2,6 @@
 	"version": 3,
 	"routes": [
 		{
-			"src": "/",
-			"headers": {
-				"Location": "/es"
-			},
-			"status": 301
-		},
-		{
 			"src": "^/_astro/(.*)$",
 			"headers": {
 				"cache-control": "public, max-age=31536000, immutable"
@@ -28,10 +21,6 @@
 		},
 		{
 			"src": "^\\/es\\/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^\\/$",
 			"dest": "_render"
 		}
 	]

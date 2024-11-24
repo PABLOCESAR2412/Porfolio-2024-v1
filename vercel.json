@@ -5,6 +5,6 @@
     "installCommand": "npm install",
     "routes": [
         { "handle": "filesystem" },
-        { "src": "/(.*)", "dest": "/index.astro" }
+        { "src": "/(.*)", "dest": "/index.html" }
     ]
 }

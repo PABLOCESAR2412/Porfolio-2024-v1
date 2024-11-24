@@ -1,7 +1,7 @@
 /* empty css                                  */
 import { c as createComponent, r as renderTemplate, a as renderComponent } from '../chunks/astro/server_BMo9iyvC.mjs';
 import 'kleur/colors';
-import { $ as $$HomePage } from '../chunks/HomePage_sU4CA_hn.mjs';
+import { $ as $$HomePage } from '../chunks/HomePage_M41o5cff.mjs';
 import { e as en } from '../chunks/en_DH7d5OsK.mjs';
 export { renderers } from '../renderers.mjs';
 

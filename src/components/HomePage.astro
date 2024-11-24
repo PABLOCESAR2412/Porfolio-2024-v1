@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro'
+import About from '../components/About.astro'
+import Project from '../components/Project.astro'
+import Skills from '../components/Skills.astro'
+import Experience from '../components/Experience.astro';
+import Studies from '../components/Studies.astro';
+import Courses from '../components/Courses.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  translations: any;
+  locale: string;
+}
+
+const { translations, locale } = Astro.props;
+---
+
+<Layout title="Portfolio Pablo Torres">
+  <main class="z-10">
+    <Navbar translations={translations} locale={locale}/>
+    <About translations={translations} locale={locale}/>
+    <Project translations={translations} locale={locale}/>
+    <Skills translations={translations} locale={locale}/>
+    <Experience translations={translations} locale={locale}/>
+    <Studies translations={translations} locale={locale}/>
+    <Courses translations={translations} locale={locale}/>
+    <Contact translations={translations} locale={locale}/>
+    <Footer translations={translations} locale={locale}/>
+  </main>
+</Layout>

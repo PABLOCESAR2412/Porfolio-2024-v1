@@ -1,0 +1,17 @@
+---
+import HomePage from '../components/HomePage.astro';
+import es from '../i18n/es.json';
+import en from '../i18n/en.json';
+
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'es'}},
+    {params: {lang: 'en'}},
+  ];
+}
+
+const { lang } = Astro.params;
+const translations = lang === 'en' ? en : es;
+---
+
+<HomePage translations={translations} locale={lang} />

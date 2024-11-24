@@ -1,6 +1,7 @@
 {
-    "redirects": {
+    "redirects": [{
         "source": "/",
         "destination": "/src/pages/es"
-    }
+
+    }]
 }

@@ -9,15 +9,15 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
     output: 'server',
     adapter: vercel(),
-    redirects: {
-        '/': '/es',
-    },
     integrations: [tailwind()],
     devToolbar: {
         enabled: false
     },
     i18n: {
         defaultLocale: 'es',
-        locales: ['es', 'en']
+        locales: ['es', 'en'],
+        routing: {
+            prefixDefaultLocale: false
+        }
     }
 });

@@ -1,5 +1,10 @@
 {
-    "buildCommand": "astro build",
-    "devCommand": "astro dev",
-    "framework": "astro"
+    "buildCommand": "npm run vercel-build",
+    "outputDirectory": "dist",
+    "framework": "astro",
+    "installCommand": "npm install",
+    "routes": [
+        { "handle": "filesystem" },
+        { "src": "/(.*)", "dest": "/index.astro" }
+    ]
 }

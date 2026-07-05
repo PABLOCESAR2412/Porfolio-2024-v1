@@ -49,14 +49,6 @@
     const cancelBtn = document.getElementById('cancel-btn');
     const redirectUrl = "https://porfolio-pablo-torres.vercel.app/";
 
-    // Check if the user previously clicked "stay" in this session
-    const hasDecidedToStay = sessionStorage.getItem('stayOnOldPortfolio');
-
-    if (hasDecidedToStay === 'true') {
-      if (overlay) overlay.style.display = 'none';
-      return;
-    }
-
     function startTimer() {
       timer = window.setInterval(() => {
         timeLeft -= 1;
@@ -72,15 +64,11 @@
     if (cancelBtn) {
       cancelBtn.addEventListener('click', () => {
         if (timer) window.clearInterval(timer);
-        // Save the preference so the modal doesn't keep popping up if they navigate
-        sessionStorage.setItem('stayOnOldPortfolio', 'true');
-        // Remove the overlay to reveal the page
         if (overlay) overlay.style.display = 'none';
       });
     }
 
-    // Start timer only if overlay is present
-    if (overlay && hasDecidedToStay !== 'true') {
+    if (overlay) {
       startTimer();
     }
   })();

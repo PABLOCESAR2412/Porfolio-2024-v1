@@ -40,10 +40,10 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
+<script is:inline>
+  (function() {
     let timeLeft = 5;
-    let timer: number | null = null;
+    let timer = null;
     const overlay = document.getElementById('redirect-overlay');
     const countdownEl = document.getElementById('countdown');
     const cancelBtn = document.getElementById('cancel-btn');
@@ -53,7 +53,7 @@
     const hasDecidedToStay = sessionStorage.getItem('stayOnOldPortfolio');
 
     if (hasDecidedToStay === 'true') {
-      if (overlay) overlay.remove();
+      if (overlay) overlay.style.display = 'none';
       return;
     }
 
@@ -75,13 +75,13 @@
         // Save the preference so the modal doesn't keep popping up if they navigate
         sessionStorage.setItem('stayOnOldPortfolio', 'true');
         // Remove the overlay to reveal the page
-        if (overlay) overlay.remove();
+        if (overlay) overlay.style.display = 'none';
       });
     }
 
     // Start timer only if overlay is present
-    if (overlay) {
+    if (overlay && hasDecidedToStay !== 'true') {
       startTimer();
     }
-  });
+  })();
 </script>

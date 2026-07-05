@@ -1,0 +1,87 @@
+---
+---
+
+<div id="redirect-overlay" class="fixed inset-0 z-[9999] bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-4 overflow-hidden font-['Poppins']">
+  
+  <!-- Background decorations (Ambient Glow) -->
+  <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600 rounded-full mix-blend-screen filter blur-[150px] opacity-30 animate-pulse"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600 rounded-full mix-blend-screen filter blur-[150px] opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
+  
+  <div class="relative z-10 max-w-2xl w-full bg-slate-900/80 backdrop-blur-2xl border border-slate-700/50 rounded-[2rem] p-8 md:p-14 shadow-2xl text-center transform transition-all">
+    
+    <!-- Icon -->
+    <div class="mx-auto mb-8 flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 shadow-lg shadow-purple-500/40 relative">
+      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 animate-ping opacity-20"></div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-6 tracking-tight">
+      El porfolio se ha actualizado
+    </h1>
+    
+    <p id="status-text" class="text-slate-300 text-lg md:text-xl mb-10 font-light leading-relaxed">
+      He migrado mi porfolio a una nueva y mejorada versión. <br class="hidden md:block" />
+      Serás redirigido automáticamente en <span id="countdown" class="font-bold text-white text-3xl mx-2 shadow-sm">5</span> segundos.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+      <a href="https://porfolio-pablo-torres.vercel.app/" id="redirect-link" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto text-center flex items-center justify-center gap-2">
+        <span>Ir al nuevo porfolio</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+      <button id="cancel-btn" class="px-8 py-4 bg-slate-800/80 hover:bg-slate-700 text-slate-300 rounded-full font-semibold transition-all duration-300 w-full sm:w-auto text-center border border-slate-700 hover:border-slate-500">
+        Quedarme aquí
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let timeLeft = 5;
+    let timer: number | null = null;
+    const overlay = document.getElementById('redirect-overlay');
+    const countdownEl = document.getElementById('countdown');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const redirectUrl = "https://porfolio-pablo-torres.vercel.app/";
+
+    // Check if the user previously clicked "stay" in this session
+    const hasDecidedToStay = sessionStorage.getItem('stayOnOldPortfolio');
+
+    if (hasDecidedToStay === 'true') {
+      if (overlay) overlay.remove();
+      return;
+    }
+
+    function startTimer() {
+      timer = window.setInterval(() => {
+        timeLeft -= 1;
+        if (countdownEl) countdownEl.textContent = timeLeft.toString();
+        
+        if (timeLeft <= 0) {
+          if (timer) window.clearInterval(timer);
+          window.location.href = redirectUrl;
+        }
+      }, 1000);
+    }
+
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', () => {
+        if (timer) window.clearInterval(timer);
+        // Save the preference so the modal doesn't keep popping up if they navigate
+        sessionStorage.setItem('stayOnOldPortfolio', 'true');
+        // Remove the overlay to reveal the page
+        if (overlay) overlay.remove();
+      });
+    }
+
+    // Start timer only if overlay is present
+    if (overlay) {
+      startTimer();
+    }
+  });
+</script>

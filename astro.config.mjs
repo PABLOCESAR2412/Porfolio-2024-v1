@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-    output: 'server',
+    output: 'hybrid',
     adapter: vercel(),
     integrations: [tailwind()],
     devToolbar: {
@@ -15,7 +15,8 @@ export default defineConfig({
         defaultLocale: 'es',
         locales: ['en', 'es'],
         routing: {
-            prefixDefaultLocale: false,
+            prefixDefaultLocale: true,
+            redirectToDefaultLocale: true,
             strategy: 'pathname'
         },
         fallback: {
